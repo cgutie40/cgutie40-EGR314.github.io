@@ -11,7 +11,7 @@ as part of<br>
 for<br>
 <font size= "5"> Team 202 </font><br>
 
-**Submission: January 18, 2026
+**Submission: January 18, 2026**
 </center>
 
 ## Introduction
@@ -21,7 +21,7 @@ for<br>
 ### Project Summary
 
 * This needs to be updated to reflect <ins>your version</ins> of the team project, so when shared not via the team's report, the reader gets an idea of the direction of the project and how your work will contribute to the overall success.
-* Team 202 [team report.](https://egr314-s-2026-202.github.io/)
+* Team 202 [Team Report.](https://egr314-s-2026-202.github.io/)
 
 ### My Contribution
 
