@@ -8,7 +8,7 @@ The Wireless Communication Subsystem provides the link between the Human-Machine
 
 The subsystem must interface with sensors, motor controllers, and actuators using standard serial protocols (UART, I²C, and SPI). Basic human-machine interaction through a display or input device is required, with more advanced graphical or web-based interfaces considered optional. The system must also support reliable communication with motion-related subsystems, provide status feedback where possible, and meet power, thermal, and size constraints suitable for integration on the rover PCB.
 
-### Wireless Communication Subsystem Requirements 
+#### Wireless Communication Subsystem Requirements 
 
 | **Requirement Description** | **Measure of<br> Threshold** | **Target<br>Measure** | **Stretch<br>Requirement<br>(Y-N)** |
 |-----------------------------|------------------------------|-----------------------|:----------------------------------:|
@@ -24,6 +24,6 @@ The subsystem must interface with sensors, motor controllers, and actuators usin
 | Communication with arm subsystem | One-way control communication | Bidirectional control and status feedback | No |
 | System status monitoring | Able to detect subsystem presence | Heartbeat/status reporting for all subsystems | Yes |
 | Power consumption | Operates without overheating | Efficient operation < specified power budget | No |
-| Physical mounting | Fits on rover PCB | Surface-mounted, compact footprint | No |
+
 
 
