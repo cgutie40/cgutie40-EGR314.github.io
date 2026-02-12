@@ -89,6 +89,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#microcontroller-selection" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -665,6 +670,19 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Microcontroller Selection
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -675,6 +693,181 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#project-specific-peripheral-and-pin-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Project-Specific Peripheral and Pin Requirements
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Project-Specific Peripheral and Pin Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#required-communication-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Required Communication Interfaces
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control-and-support-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Control and Support Signals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#power-and-ground" class="md-nav__link">
+    <span class="md-ellipsis">
+      Power and Ground
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pin-count-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pin Count Summary
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mandatory-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mandatory Signals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommended-additional-pins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommended Additional Pins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notes-and-design-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes and Design Considerations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#microcontroller-esp32" class="md-nav__link">
+    <span class="md-ellipsis">
+      Microcontroller (ESP32)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subsystem-role-and-responsibilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subsystem Role and Responsibilities
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#worked-out-communication-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked-Out Communication Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Worked-Out Communication Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-ble-gatt-communication-esp32-esp32" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. BLE GATT Communication (ESP32 ↔ ESP32)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-bluetooth-classic-serial-port-profile-spp" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Bluetooth Classic Serial Port Profile (SPP)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uart-to-hmi" class="md-nav__link">
+    <span class="md-ellipsis">
+      UART to HMI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usb-programming-native-usb" class="md-nav__link">
+    <span class="md-ellipsis">
+      USB Programming (Native USB)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status-leds" class="md-nav__link">
+    <span class="md-ellipsis">
+      Status LEDs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -807,6 +1000,172 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#project-specific-peripheral-and-pin-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Project-Specific Peripheral and Pin Requirements
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Project-Specific Peripheral and Pin Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#required-communication-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Required Communication Interfaces
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control-and-support-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Control and Support Signals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#power-and-ground" class="md-nav__link">
+    <span class="md-ellipsis">
+      Power and Ground
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pin-count-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pin Count Summary
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mandatory-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mandatory Signals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommended-additional-pins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommended Additional Pins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notes-and-design-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes and Design Considerations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#microcontroller-esp32" class="md-nav__link">
+    <span class="md-ellipsis">
+      Microcontroller (ESP32)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subsystem-role-and-responsibilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subsystem Role and Responsibilities
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#worked-out-communication-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked-Out Communication Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Worked-Out Communication Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-ble-gatt-communication-esp32-esp32" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. BLE GATT Communication (ESP32 ↔ ESP32)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-bluetooth-classic-serial-port-profile-spp" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Bluetooth Classic Serial Port Profile (SPP)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uart-to-hmi" class="md-nav__link">
+    <span class="md-ellipsis">
+      UART to HMI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usb-programming-native-usb" class="md-nav__link">
+    <span class="md-ellipsis">
+      USB Programming (Native USB)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status-leds" class="md-nav__link">
+    <span class="md-ellipsis">
+      Status LEDs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -829,9 +1188,389 @@
   
 
 
-  <h1>Microcontroller Selection</h1>
-
-
+<h1 id="microcontroller-selection">Microcontroller Selection</h1>
+<h2 id="project-specific-peripheral-and-pin-requirements">Project-Specific Peripheral and Pin Requirements</h2>
+<p>To determine hardware compatibility and confirm sufficient I/O availability, the required peripherals and total pin count for the Wireless Communication Subsystem were checked. The ESP32-S3-WROOM-1 module will serve as a communication bridge between the HMI (via UART) and the rover’s local communications ESP32 (via Bluetooth).</p>
+<h3 id="required-communication-interfaces">Required Communication Interfaces</h3>
+<table>
+<thead>
+<tr>
+<th>Interface</th>
+<th>Signals Required</th>
+<th>Total Pins</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UART (HMI)</td>
+<td>TX, RX</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Bluetooth</td>
+<td>Internal (no external GPIO required)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Native USB Programming</td>
+<td>D+, D−</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="control-and-support-signals">Control and Support Signals</h3>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Signals Required</th>
+<th>Total Pins</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Status LEDs</td>
+<td>2 GPIO outputs</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Enable / Reset</td>
+<td>EN</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Boot / Programming Mode</td>
+<td>IO0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="power-and-ground">Power and Ground</h3>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Signals Required</th>
+<th>Total Pins</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3.3V Supply</td>
+<td>VCC</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Ground</td>
+<td>GND (multiple recommended)</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="pin-count-summary">Pin Count Summary</h3>
+<h3 id="mandatory-signals">Mandatory Signals</h3>
+<ul>
+<li>UART (HMI): 2  </li>
+<li>USB (Programming): 2  </li>
+<li>Status LEDs: 2  </li>
+<li>EN (Reset): 1  </li>
+<li>IO0 (Boot): 1  </li>
+<li>3.3V: 1  </li>
+<li>Ground: 3  </li>
+</ul>
+<p><strong>Total Mandatory Pins: 12</strong></p>
+<hr>
+<h3 id="recommended-additional-pins">Recommended Additional Pins</h3>
+<ul>
+<li>Optional Debug UART (TX/RX): 2  </li>
+<li>Spare GPIO for future expansion: 4  </li>
+</ul>
+<p><strong>Total Including Optional/Reserve Pins: 18</strong></p>
+<hr>
+<h3 id="notes-and-design-considerations">Notes and Design Considerations</h3>
+<ul>
+<li>The ESP32-S3 operates at 3.3V logic levels. All UART-connected devices must be 3.3V compatible or use level shifting.</li>
+<li>Bluetooth communication is internal to the module and does not require dedicated GPIO pins.</li>
+<li>Multiple ground pins are recommended for reliable external connections.</li>
+<li>Boot and reset pins must remain accessible to allow firmware flashing.</li>
+<li>Additional spare GPIO pins are reserved for future subsystem expansion or diagnostics.</li>
+</ul>
+<p>This analysis confirms that the ESP32-S3-WROOM-1 module provides sufficient peripheral interfaces and GPIO availability to support the communications subsystem requirements.</p>
+<h2 id="microcontroller-esp32">Microcontroller (ESP32)</h2>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Model</td>
+<td>ESP32-S3-WROOM-1-N4</td>
+</tr>
+<tr>
+<td>Product Page URL</td>
+<td><a href="https://www.espressif.com/en/products/modules/esp32-s3-wroom-1">ESP32-S3-WROOM-1 Product Page</a></td>
+</tr>
+<tr>
+<td>ESP32-S3-WROOM-1-N4 Datasheet URL</td>
+<td><a href="https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf">ESP32-S3-WROOM-1 Datasheet</a></td>
+</tr>
+<tr>
+<td>ESP32 S3 Datasheet URL</td>
+<td><a href="https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_en.pdf">ESP32-S3 Datasheet</a></td>
+</tr>
+<tr>
+<td>ESP32 S3 Technical Reference Manual URL</td>
+<td><a href="https://www.espressif.com/sites/default/files/documentation/esp32-s3_technical_reference_manual_en.pdf">ESP32-S3 Technical Reference Manual</a></td>
+</tr>
+<tr>
+<td>Vendor link</td>
+<td><a href="https://www.digikey.com/en/products/detail/espressif-systems/ESP32-S3-WROOM-1-N4/16162639">Digikey – ESP32-S3-WROOM-1-N4</a></td>
+</tr>
+<tr>
+<td>Code Examples</td>
+<td><a href="https://github.com/espressif/esp-idf/tree/master/examples">ESP-IDF Examples</a>, <a href="https://github.com/espressif/arduino-esp32">Arduino ESP32 Core</a></td>
+</tr>
+<tr>
+<td>External Resources URL(s)</td>
+<td><a href="https://randomnerdtutorials.com/">Random Nerd Tutorials – ESP32-S3</a>, <a href="https://www.youtube.com/@EspressifSystems">Espressif YouTube Channel</a></td>
+</tr>
+<tr>
+<td>Unit cost</td>
+<td>~$5.06 USD (qty 1)</td>
+</tr>
+<tr>
+<td>Supply Voltage Range</td>
+<td>3.0 – 3.6 V (Nominal 3.3 V), Absolute Max 3.6 V</td>
+</tr>
+<tr>
+<td>Maximum GPIO current (per pin)</td>
+<td>40 mA source, 28 mA sink</td>
+</tr>
+<tr>
+<td>Absolute Maximum Current (entire IC)</td>
+<td>Not explicitly specified; external supply up to 0.5 A (recommended)</td>
+</tr>
+<tr>
+<td>Supports External Interrupts?</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Required Programming Hardware, Cost, URL</td>
+<td>USB cable (native USB supported) or 3.3V USB-to-UART adapter (~$10)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th># Available</th>
+<th>Needed</th>
+<th>Associated Pins (or * for any)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UART</td>
+<td>3</td>
+<td>1</td>
+<td>Any GPIO via matrix (TX/RX)</td>
+</tr>
+<tr>
+<td>external SPI*</td>
+<td>2 (SPI2, SPI3)</td>
+<td>0</td>
+<td>*</td>
+</tr>
+<tr>
+<td>I2C</td>
+<td>2</td>
+<td>0</td>
+<td>*</td>
+</tr>
+<tr>
+<td>GPIO</td>
+<td>Up to 45 (module exposes fewer)</td>
+<td>2–4</td>
+<td>Status LEDs / control lines</td>
+</tr>
+<tr>
+<td>ADC</td>
+<td>2 units</td>
+<td>0</td>
+<td>-</td>
+</tr>
+<tr>
+<td>LED PWM</td>
+<td>8 channels (LEDC)</td>
+<td>0–1</td>
+<td>Status LED</td>
+</tr>
+<tr>
+<td>Motor PWM</td>
+<td>2 MCPWM units</td>
+<td>0</td>
+<td>-</td>
+</tr>
+<tr>
+<td>USB Programmer</td>
+<td>1 (native USB OTG)</td>
+<td>1</td>
+<td>USB D+ / D−</td>
+</tr>
+<tr>
+<td>WiFi</td>
+<td>1</td>
+<td>0</td>
+<td>Internal</td>
+</tr>
+<tr>
+<td>Bluetooth LE</td>
+<td>1</td>
+<td>1</td>
+<td>Internal</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>* The ESP32-S3 has multiple SPI interfaces, but one is used internally for flash.</p>
+<h2 id="subsystem-role-and-responsibilities">Subsystem Role and Responsibilities</h2>
+<p>As the Wireless Communication Subsystem lead, my primary role on the team is to design and implement the gateway interface between the Human-Machine Interface (HMI) and the rover’s distributed control architecture. My ESP32-S3 module serves as a communication bridge, receiving user commands from the HMI via UART and transmitting them wirelessly to the rover’s local communications ESP32 using Bluetooth. In the reverse direction, my subsystem receives telemetry data from the rover’s daisy-chained sensor network and forwards relevant information back to the HMI for display. While my subsystem does not directly perform sensing or actuation, it is responsible for reliable transport of sensor data and control signals between systems. My responsibilities include selecting and configuring UART and Bluetooth interfaces, defining packet structure and data framing, verifying signal integrity and voltage compatibility, managing power requirements for the communication hardware, and implementing error detection and recovery features. Overall, my role is to make sure my system is robust, low-latency, and a reliable bidirectional communication between the operator interface and the rover subsystems.</p>
+<h2 id="worked-out-communication-examples">Worked-Out Communication Examples</h2>
+<h3 id="1-ble-gatt-communication-esp32-esp32">1. BLE GATT Communication (ESP32 ↔ ESP32)</h3>
+<p>A BLE GATT server/client example was reviewed to verify compatibility between two ESP32 devices using Bluetooth Low Energy. In this configuration, one ESP32 acts as a GATT server (advertising telemetry data), while the other acts as a GATT client (connecting, subscribing to notifications, and sending commands). This confirms bidirectional wireless communication using the ESP32-S3 BLE stack.</p>
+<p>Reference:
+<a href="https://randomnerdtutorials.com/esp32-ble-server-client/">Example 1 Link</a></p>
+<hr>
+<h3 id="2-bluetooth-classic-serial-port-profile-spp">2. Bluetooth Classic Serial Port Profile (SPP)</h3>
+<p>A Bluetooth Classic SPP example was reviewed to evaluate transparent serial communication between two ESP32 boards. This approach allows one ESP32 to function as a wireless serial bridge, replacing a physical UART connection. The example demonstrates reliable data transmission between devices using the ESP-IDF Bluetooth SPP API.</p>
+<p>Reference:
+<a href="https://github.com/nopnop2002/esp-idf-Bluetooth-SPP">Example 2 Link</a></p>
+<p>## ESP32-S3-WROOM-1 / 1U Pin Allocation Tables</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../pinoutDiagram.png" data-desc-position="bottom"><img alt="ESP32-S3-WROOM-1 / 1U Pin Allocation Image" src="../pinoutDiagram.png"></a></p>
+<table>
+<thead>
+<tr>
+<th>Peripheral</th>
+<th>Signal</th>
+<th>ESP32 Pin #</th>
+<th>GPIO</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Power</td>
+<td>3V3</td>
+<td>2</td>
+<td>3V3</td>
+<td>3.3V supply</td>
+</tr>
+<tr>
+<td>Power</td>
+<td>GND</td>
+<td>1, 40, EPAD</td>
+<td>GND</td>
+<td>Tie all grounds</td>
+</tr>
+<tr>
+<td>Enable</td>
+<td>EN</td>
+<td>3</td>
+<td>EN</td>
+<td>Pull-up required (10kΩ)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="uart-to-hmi">UART to HMI</h3>
+<table>
+<thead>
+<tr>
+<th>Peripheral</th>
+<th>Signal</th>
+<th>ESP32 Pin #</th>
+<th>GPIO</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UART1</td>
+<td>TX → HMI RX</td>
+<td>15</td>
+<td>GPIO3</td>
+<td>Safe GPIO</td>
+</tr>
+<tr>
+<td>UART1</td>
+<td>RX ← HMI TX</td>
+<td>16</td>
+<td>GPIO46</td>
+<td>Input-only pin (good for RX)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="usb-programming-native-usb">USB Programming (Native USB)</h3>
+<table>
+<thead>
+<tr>
+<th>Peripheral</th>
+<th>Signal</th>
+<th>ESP32 Pin #</th>
+<th>GPIO</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>USB</td>
+<td>D+</td>
+<td>37</td>
+<td>U0TXD</td>
+<td>Native USB function</td>
+</tr>
+<tr>
+<td>USB</td>
+<td>D−</td>
+<td>36</td>
+<td>U0RXD</td>
+<td>Native USB function</td>
+</tr>
+</tbody>
+</table>
+<h3 id="status-leds">Status LEDs</h3>
+<table>
+<thead>
+<tr>
+<th>Peripheral</th>
+<th>Signal</th>
+<th>ESP32 Pin #</th>
+<th>GPIO</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Status LED</td>
+<td>TX Activity</td>
+<td>17</td>
+<td>GPIO9</td>
+<td>Output</td>
+</tr>
+<tr>
+<td>Status LED</td>
+<td>BLE Connected</td>
+<td>18</td>
+<td>GPIO10</td>
+<td>Output</td>
+</tr>
+</tbody>
+</table>
 
 
 
