@@ -660,6 +660,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Microcontroller Selection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uart-to-hmi" class="md-nav__link">
+    <span class="md-ellipsis">
+      UART to HMI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usb-programming-native-usb" class="md-nav__link">
+    <span class="md-ellipsis">
+      USB Programming (Native USB)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status-leds" class="md-nav__link">
+    <span class="md-ellipsis">
+      Status LEDs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -917,6 +950,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Microcontroller Selection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uart-to-hmi" class="md-nav__link">
+    <span class="md-ellipsis">
+      UART to HMI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usb-programming-native-usb" class="md-nav__link">
+    <span class="md-ellipsis">
+      USB Programming (Native USB)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status-leds" class="md-nav__link">
+    <span class="md-ellipsis">
+      Status LEDs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1165,6 +1231,125 @@
 </table>
 <hr>
 <p>* The ESP32-S3 has multiple SPI interfaces, but one is used internally for flash.</p>
+<p>### ESP32-S3-WROOM-1 / 1U Pin Allocation Table</p>
+<table>
+<thead>
+<tr>
+<th>Peripheral</th>
+<th>Signal</th>
+<th>ESP32 Pin #</th>
+<th>GPIO</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Power</td>
+<td>3V3</td>
+<td>2</td>
+<td>3V3</td>
+<td>3.3V supply</td>
+</tr>
+<tr>
+<td>Power</td>
+<td>GND</td>
+<td>1, 40, EPAD</td>
+<td>GND</td>
+<td>Tie all grounds</td>
+</tr>
+<tr>
+<td>Enable</td>
+<td>EN</td>
+<td>3</td>
+<td>EN</td>
+<td>Pull-up required (10kΩ)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uart-to-hmi">UART to HMI</h4>
+<table>
+<thead>
+<tr>
+<th>Peripheral</th>
+<th>Signal</th>
+<th>ESP32 Pin #</th>
+<th>GPIO</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UART1</td>
+<td>TX → HMI RX</td>
+<td>15</td>
+<td>GPIO3</td>
+<td>Safe GPIO</td>
+</tr>
+<tr>
+<td>UART1</td>
+<td>RX ← HMI TX</td>
+<td>16</td>
+<td>GPIO46</td>
+<td>Input-only pin (good for RX)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="usb-programming-native-usb">USB Programming (Native USB)</h4>
+<table>
+<thead>
+<tr>
+<th>Peripheral</th>
+<th>Signal</th>
+<th>ESP32 Pin #</th>
+<th>GPIO</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>USB</td>
+<td>D+</td>
+<td>37</td>
+<td>U0TXD</td>
+<td>Native USB function</td>
+</tr>
+<tr>
+<td>USB</td>
+<td>D−</td>
+<td>36</td>
+<td>U0RXD</td>
+<td>Native USB function</td>
+</tr>
+</tbody>
+</table>
+<h4 id="status-leds">Status LEDs</h4>
+<table>
+<thead>
+<tr>
+<th>Peripheral</th>
+<th>Signal</th>
+<th>ESP32 Pin #</th>
+<th>GPIO</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Status LED</td>
+<td>TX Activity</td>
+<td>17</td>
+<td>GPIO9</td>
+<td>Output</td>
+</tr>
+<tr>
+<td>Status LED</td>
+<td>BLE Connected</td>
+<td>18</td>
+<td>GPIO10</td>
+<td>Output</td>
+</tr>
+</tbody>
+</table>
 
 
 
