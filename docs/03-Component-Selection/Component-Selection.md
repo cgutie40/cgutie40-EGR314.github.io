@@ -82,10 +82,9 @@ For more details, review the ["Appendix - Component Selection Process - Actuator
 | Code Examples | [ESP-IDF Examples](https://github.com/espressif/esp-idf/tree/master/examples), [Arduino ESP32 Core](https://github.com/espressif/arduino-esp32) |
 | External Resources URL(s) | [Random Nerd Tutorials – ESP32-S3](https://randomnerdtutorials.com/), [Espressif YouTube Channel](https://www.youtube.com/@EspressifSystems) |
 | Unit cost | ~$5.06 USD (qty 1) |
-| Absolute Maximum Current for entire IC | ? |
-| Supply Voltage Range | 3.0V – 3.6V (Nominal 3.3V, Absolute Max 3.6V) |
-| Absolute Maximum current (for entire IC) | ? |
-| Maximum GPIO current (per pin) | 40 mA (absolute max), recommended ≤ 20 mA |
+Supply Voltage Range | 3.0 – 3.6 V (Nominal 3.3 V), Absolute Max 3.6 V
+Maximum GPIO current (per pin) | 40 mA source, 28 mA sink
+Absolute Maximum Current (entire IC) | Not explicitly specified; external supply up to 0.5 A (recommended)|
 | Supports External Interrupts? | Yes |
 | Required Programming Hardware, Cost, URL | USB cable (native USB supported) or 3.3V USB-to-UART adapter (~$10) |
 
