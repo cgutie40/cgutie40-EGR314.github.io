@@ -143,8 +143,8 @@ Reference:
 
 | Peripheral | Signal | ESP32 Pin # | GPIO | Notes |
 |------------|--------|-------------|------|-------|
-| USB | D+ | 37 | U0TXD | Native USB function |
-| USB | D− | 36 | U0RXD | Native USB function |
+| USB | D+ | 14 | GPIO20 | Native USB function (D+)|
+| USB | D− | 13 | GPIO19 | Native USB function (D-)|
 
 ### Status LEDs
 
