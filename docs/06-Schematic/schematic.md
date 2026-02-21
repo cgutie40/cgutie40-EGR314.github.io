@@ -4,13 +4,11 @@ title: Module Schematic
 
 ## Overview
 
-This schematic is design to support .... (highlight functionally, power, and controller).
 
-
-![schematic](Screenshot.png){style width:"350" height:"300;"}
-**Figure ##:** Showing a example schematic.
+![Wireless Communication Subsystem](WCSV1P1.png){style width:"350" height:"300;"}
+**Figure 01:** Wireless Communication Subsystem Schematic
 
 
 ## Resouces
 
-The schematic as a PDF download is available [*here*](ExampleSchematic.pdf), and the Zip folder of the project [*here*](dummyZip.zip).
+The schematic as a PDF download is available [*here*](WCSV1.pdf), and the Zip folder of the project [*here*](Wireless%20Communication%20Subsystem%20V1.zip).
