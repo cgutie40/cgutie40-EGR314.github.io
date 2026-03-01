@@ -26,17 +26,17 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://cgutie40.github.io/cgutie40-EGR314.github.io/05-BOM/BOM/</loc>
-         <lastmod>2026-03-01</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://cgutie40.github.io/cgutie40-EGR314.github.io/05-Power%20Budget/Power_Budget/</loc>
          <lastmod>2026-03-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://cgutie40.github.io/cgutie40-EGR314.github.io/06-Schematic/schematic/</loc>
+         <loc>https://cgutie40.github.io/cgutie40-EGR314.github.io/06-BOM/BOM/</loc>
+         <lastmod>2026-03-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://cgutie40.github.io/cgutie40-EGR314.github.io/07-Schematic/schematic/</loc>
          <lastmod>2026-03-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
