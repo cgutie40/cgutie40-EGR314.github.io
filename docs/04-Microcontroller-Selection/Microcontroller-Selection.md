@@ -133,7 +133,7 @@ Reference:
 | Power | 3V3 | 2 | 3V3 | 3.3V supply |
 | Power | GND | 1, 40, EPAD | GND | Tie all grounds |
 | Enable | EN | 3 | EN | Pull-up required (10kΩ) |
-| Boot | IO0 | 27 | Boot/ RESET |
+| Boot | IO0 | 27 | Boot |
 
 ### UART to HMI
 
