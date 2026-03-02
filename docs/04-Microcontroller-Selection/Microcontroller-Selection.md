@@ -16,7 +16,7 @@ To determine hardware compatibility and confirm sufficient I/O availability, the
 
 | Function | Signals Required | Total Pins |
 |-----------|-----------------|------------|
-| Status LEDs | 2 GPIO outputs | 2 |
+| Status LEDs | 4 GPIO outputs | 4 |
 | Enable / Reset | EN | 1 |
 | Boot / Programming Mode | IO0 | 1 |
 
@@ -25,7 +25,7 @@ To determine hardware compatibility and confirm sufficient I/O availability, the
 | Function | Signals Required | Total Pins |
 |-----------|-----------------|------------|
 | 3.3V Supply | VCC | 1 |
-| Ground | GND (multiple recommended) | 3 |
+| Ground | GND (multiple) | 2 |
 
 ---
 
@@ -34,21 +34,22 @@ To determine hardware compatibility and confirm sufficient I/O availability, the
 ### Mandatory Signals
 - UART (HMI): 2  
 - USB (Programming): 2  
-- Status LEDs: 2  
+- Status LEDs: 4  
 - EN (Reset): 1  
 - IO0 (Boot): 1  
 - 3.3V: 1  
-- Ground: 3  
+- Ground: 2  
 
 **Total Mandatory Pins: 12**
 
 ---
 
-### Recommended Additional Pins
-- Optional Debug UART (TX/RX): 2  
-- Spare GPIO for future expansion: 4  
+### Additional Pins
+-  Debug GPIO:  1
+-  Debug LED: 1
 
-**Total Including Optional/Reserve Pins: 18**
+
+**Total Including Optional/Reserve Pins: 15**
 
 ---
 
@@ -131,13 +132,22 @@ Reference:
 | Power | 3V3 | 2 | 3V3 | 3.3V supply |
 | Power | GND | 1, 40, EPAD | GND | Tie all grounds |
 | Enable | EN | 3 | EN | Pull-up required (10kΩ) |
+| Boot | IO0 | 27 | Boot/ RESET |
 
 ### UART to HMI
 
 | Peripheral | Signal | ESP32 Pin # | GPIO | Notes |
 |------------|--------|-------------|------|-------|
-| UART1 | TX → HMI RX | 15 | GPIO3 | Safe GPIO |
-| UART1 | RX ← HMI TX | 16 | GPIO46 | Input-only pin (good for RX) |
+| UART1 | TX → HMI RX | 28 | GPIO35 | U1TX |
+| UART1 | RX ← HMI TX | 29 | GPIO36 | U1RX|
+
+### GPIO to HMI
+
+| Peripheral | Signal | ESP32 Pin # | GPIO | Notes |
+|------------|--------|-------------|------|-------|
+| GPIO | GPIO21 → HMI GPIO | 21 | GPIO21 | Indicates BT Connectivity Status to HMI|
+
+
 
 ### USB Programming (Native USB)
 
@@ -150,8 +160,10 @@ Reference:
 
 | Peripheral | Signal | ESP32 Pin # | GPIO | Notes |
 |------------|--------|-------------|------|-------|
-| Status LED | TX Activity | 17 | GPIO9 | Output |
-| Status LED | BLE Connected | 18 | GPIO10 | Output |
+| Status LED | BT Connected | 17 | GPIO9 | Output |
+| Status LED | TX Activity | 18 | GPIO10 | Output |
+| Status LED | RX Activity | 19 | GPIO11 | Output |
+| Status LED |Debug LED | 5 | GPIO5 | Output |
 
 ## Final Microcontroller Selection and Rationale
 
