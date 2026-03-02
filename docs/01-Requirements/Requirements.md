@@ -14,8 +14,6 @@ The following table defines measurable requirements used to verify subsystem suc
 
 #### Wireless Communication Subsystem Requirements 
 
-#### Wireless Communication Subsystem Requirements 
-
 | **Requirement Description** | **Measure of Threshold** | **Target Measure** | **Stretch Requirement (Y-N)** |
 |-----------------------------|--------------------------|-------------------|:-----------------------------:|
 | Surface-mounted 3.3 V switching power regulator | Output ≥ 3.2 V under load | Regulated 3.3 V ±5% | No |
