@@ -826,6 +826,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#debug-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debug Interface
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#usb-programming-native-usb" class="md-nav__link">
     <span class="md-ellipsis">
       USB Programming (Native USB)
@@ -1236,6 +1245,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#debug-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debug Interface
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#usb-programming-native-usb" class="md-nav__link">
     <span class="md-ellipsis">
       USB Programming (Native USB)
@@ -1385,10 +1403,11 @@
 <hr>
 <h3 id="additional-pins">Additional Pins</h3>
 <ul>
-<li>Debug GPIO:  1</li>
-<li>Debug LED: 1</li>
+<li>Debug GPIO (General Purpose): 1  </li>
+<li>Debug LED (GPIO5): 1  </li>
+<li>Debug Push Button (GPIO4): 1  </li>
 </ul>
-<p><strong>Total Including Optional/Reserve Pins: 15</strong></p>
+<p><strong>Total Including Optional/Reserve Pins: 16</strong></p>
 <hr>
 <h3 id="notes-and-design-considerations">Notes and Design Considerations</h3>
 <ul>
@@ -1396,7 +1415,8 @@
 <li>Bluetooth communication is internal to the module and does not require dedicated GPIO pins.</li>
 <li>Multiple ground pins are recommended for reliable external connections.</li>
 <li>Boot and reset pins must remain accessible to allow firmware flashing.</li>
-<li>Additional spare GPIO pins are reserved for future subsystem expansion or diagnostics.</li>
+<li>A dedicated debug push button (GPIO4) is included for manual testing, firmware reset control, or triggering diagnostic routines.</li>
+<li>Additional spare GPIO pins remain reserved for future subsystem expansion.</li>
 </ul>
 <p>This analysis confirms that the ESP32-S3-WROOM-1 module provides sufficient peripheral interfaces and GPIO availability to support the communications subsystem requirements.</p>
 <h2 id="microcontroller-esp32">Microcontroller (ESP32)</h2>
@@ -1498,8 +1518,8 @@
 <tr>
 <td>GPIO</td>
 <td>Up to 45 (module exposes fewer)</td>
-<td>2–4</td>
-<td>Status LEDs / control lines</td>
+<td>4–6</td>
+<td>Status LEDs, debug LED, debug push button</td>
 </tr>
 <tr>
 <td>ADC</td>
@@ -1645,6 +1665,34 @@
 </tr>
 </tbody>
 </table>
+<h3 id="debug-interface">Debug Interface</h3>
+<table>
+<thead>
+<tr>
+<th>Peripheral</th>
+<th>Signal</th>
+<th>ESP32 Pin #</th>
+<th>GPIO</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Push Button</td>
+<td>Debug Button</td>
+<td>4</td>
+<td>GPIO4</td>
+<td>Active-low input, internal pull-up enabled</td>
+</tr>
+<tr>
+<td>Status LED</td>
+<td>Debug LED</td>
+<td>5</td>
+<td>GPIO5</td>
+<td>Output</td>
+</tr>
+</tbody>
+</table>
 <h3 id="usb-programming-native-usb">USB Programming (Native USB)</h3>
 <table>
 <thead>
@@ -1704,13 +1752,6 @@
 <td>RX Activity</td>
 <td>19</td>
 <td>GPIO11</td>
-<td>Output</td>
-</tr>
-<tr>
-<td>Status LED</td>
-<td>Debug LED</td>
-<td>5</td>
-<td>GPIO5</td>
 <td>Output</td>
 </tr>
 </tbody>
