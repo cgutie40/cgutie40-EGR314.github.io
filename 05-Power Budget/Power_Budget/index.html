@@ -993,8 +993,15 @@
   <h1>Power Budget</h1>
 
 <h2 id="overview">Overview</h2>
+<p>The following figure presents the power budget used to estimate subsystem current consumption and validate power supply selection.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../Power_BudgetV1.png" data-desc-position="bottom"><img alt="Wireless Communication Power Budget" height:_300_="height:&quot;300;&quot;" src="../Power_BudgetV1.png" style="style" width:_350_="width:&quot;350&quot;"></a>
+<strong>Figure 01:</strong> Wireless Communication Power Budget</p>
 <h2 id="conclusions">Conclusions</h2>
+<p>The total worst-case current required on the 3.3 V rail is 570 mA, including a 25% safety margin. The selected LMR50410 switching regulator, rated for 1 A output, provides sufficient capacity with approximately 430 mA of additional headroom.</p>
+<p>The regulator draws approximately 250 mA from the 9 V input supply. The selected 9 V, 3 A wall adapter can easily support this requirement, leaving approximately 2750 mA of available current.</p>
+<p>Overall, the external power supply and voltage regulator are properly sized and can reliably power all system components simultaneously with adequate safety margin.</p>
 <h2 id="resources">Resources</h2>
+<p>The power budget as Microsoft Excel Sheet <a href="../Power%20Budget_314_CGE.xlsx"><em>here</em></a>.</p>
 
 
 
