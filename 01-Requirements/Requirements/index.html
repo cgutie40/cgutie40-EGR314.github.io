@@ -1034,27 +1034,9 @@
 </tr>
 <tr>
 <td>UART communication support</td>
-<td>At least one UART link</td>
-<td>Multiple UART links to subsystems</td>
+<td>At least one UART link to rover ESP32</td>
+<td>Reliable UART communication at ≥115200 baud</td>
 <td style="text-align: center;">No</td>
-</tr>
-<tr>
-<td>I²C sensor interface</td>
-<td>One I²C bus operational</td>
-<td>Shared I²C bus for multiple sensors</td>
-<td style="text-align: center;">No</td>
-</tr>
-<tr>
-<td>SPI interface support</td>
-<td>One SPI device supported</td>
-<td>SPI support for HMI display and peripherals</td>
-<td style="text-align: center;">No</td>
-</tr>
-<tr>
-<td>Human-Machine Interface support</td>
-<td>Basic user input or display</td>
-<td>Graphical display interface</td>
-<td style="text-align: center;">Yes</td>
 </tr>
 <tr>
 <td>Communication with rover ESP32</td>
@@ -1069,9 +1051,15 @@
 <td style="text-align: center;">Yes</td>
 </tr>
 <tr>
+<td>End-to-end command latency</td>
+<td>Response within 500 ms</td>
+<td>Response within 200 ms typical</td>
+<td style="text-align: center;">No</td>
+</tr>
+<tr>
 <td>Power consumption</td>
 <td>Operates without overheating</td>
-<td>Operates within defined power budget</td>
+<td>Operates within defined rover power budget</td>
 <td style="text-align: center;">No</td>
 </tr>
 </tbody>
