@@ -45,11 +45,11 @@ To determine hardware compatibility and confirm sufficient I/O availability, the
 ---
 
 ### Additional Pins
--  Debug GPIO:  1
--  Debug LED: 1
+- Debug GPIO (General Purpose): 1  
+- Debug LED (GPIO5): 1  
+- Debug Push Button (GPIO4): 1  
 
-
-**Total Including Optional/Reserve Pins: 15**
+**Total Including Optional/Reserve Pins: 16**
 
 ---
 
@@ -59,7 +59,8 @@ To determine hardware compatibility and confirm sufficient I/O availability, the
 - Bluetooth communication is internal to the module and does not require dedicated GPIO pins.
 - Multiple ground pins are recommended for reliable external connections.
 - Boot and reset pins must remain accessible to allow firmware flashing.
-- Additional spare GPIO pins are reserved for future subsystem expansion or diagnostics.
+- A dedicated debug push button (GPIO4) is included for manual testing, firmware reset control, or triggering diagnostic routines.
+- Additional spare GPIO pins remain reserved for future subsystem expansion.
 
 This analysis confirms that the ESP32-S3-WROOM-1 module provides sufficient peripheral interfaces and GPIO availability to support the communications subsystem requirements.
 
@@ -89,7 +90,7 @@ This analysis confirms that the ESP32-S3-WROOM-1 module provides sufficient peri
 | UART | 3 | 1 | Any GPIO via matrix (TX/RX) |
 | external SPI* | 2 (SPI2, SPI3) | 0 | * |
 | I2C | 2 | 0 | * |
-| GPIO | Up to 45 (module exposes fewer) | 2–4 | Status LEDs / control lines |
+| GPIO | Up to 45 (module exposes fewer) | 4–6 | Status LEDs, debug LED, debug push button |
 | ADC | 2 units | 0 | - |
 | LED PWM | 8 channels (LEDC) | 0–1 | Status LED |
 | Motor PWM | 2 MCPWM units | 0 | - |
@@ -147,7 +148,12 @@ Reference:
 |------------|--------|-------------|------|-------|
 | GPIO | GPIO21 → HMI GPIO | 21 | GPIO21 | Indicates BT Connectivity Status to HMI|
 
+### Debug Interface
 
+| Peripheral | Signal | ESP32 Pin # | GPIO | Notes |
+|------------|--------|-------------|------|-------|
+| Push Button | Debug Button | 4 | GPIO4 | Active-low input, internal pull-up enabled |
+| Status LED |Debug LED | 5 | GPIO5 | Output |
 
 ### USB Programming (Native USB)
 
@@ -163,7 +169,7 @@ Reference:
 | Status LED | BT Connected | 17 | GPIO9 | Output |
 | Status LED | TX Activity | 18 | GPIO10 | Output |
 | Status LED | RX Activity | 19 | GPIO11 | Output |
-| Status LED |Debug LED | 5 | GPIO5 | Output |
+
 
 ## Final Microcontroller Selection and Rationale
 
