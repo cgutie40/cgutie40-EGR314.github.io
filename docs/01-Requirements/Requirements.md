@@ -4,13 +4,13 @@ title: Module's Requirements
 
 ## Wireless Communication Subsystem Module Requirements
 
-The Wireless Communication Subsystem provides the link between the Human-Machine Interface (HMI) and the rover’s onboard ESP32 communication module. The subsystem enables bidirectional command and status data transfer using Bluetooth Classic communication via the Serial Port Profile (SPP).
+The Wireless Communication Subsystem provides a bidirectional communication bridge between the Human-Machine Interface (HMI) and the rover’s onboard ESP32 communication module. The subsystem enables wireless transmission of user commands from the HMI to the rover and returns rover status and telemetry data back to the HMI.
 
-The subsystem must include a surface-mounted microcontroller with a reliable onboard 3.3 V power solution and support bidirectional Bluetooth communication for sending HMI commands to the rover and receiving rover status data. The Bluetooth link shall function as a wireless serial bridge between the HMI and rover ESP32 modules.
+The subsystem shall use Bluetooth Classic communication via the Serial Port Profile (SPP) to establish a reliable wireless serial link. Over this link, command and telemetry data shall be transmitted between the HMI and the rover’s local ESP32. The subsystem functions as a communication gateway and does not directly control motors, sensors, or actuators.
 
-The subsystem must interface with sensors, motor controllers, and actuators using standard serial protocols (UART, I²C, and SPI). Basic human-machine interaction through a display or input device is required. The system must also support reliable communication with motion-related subsystems, provide status feedback where possible, and meet power, thermal, and size constraints suitable for integration on the rover PCB.
+On the rover side, subsystem data is aggregated and transmitted via UART to the rover’s local ESP32. The Wireless Communication Subsystem interfaces with this ESP32 through a dedicated UART connection, forwarding data between the UART interface and the Bluetooth SPP link.
 
-The following table defines measurable requirements used to verify subsystem success.
+The subsystem shall include a surface-mounted ESP32 microcontroller powered by a regulated 3.3 V onboard switching power supply. It shall support reliable bidirectional communication, and maintain connection status awareness.
 
 #### Wireless Communication Subsystem Requirements 
 
