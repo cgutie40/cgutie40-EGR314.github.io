@@ -21,13 +21,8 @@ The following table defines measurable requirements used to verify subsystem suc
 | Microcontroller power source | Powered from onboard regulator | Powered from 3.3 V switching regulator | No |
 | Bluetooth communication capability | Able to send OR receive Bluetooth data | Bidirectional Bluetooth Classic communication using SPP | No |
 | Bluetooth communication range | Minimum 2 meters reliable link | ≥ 5 meters reliable link | Yes |
-| UART communication support | At least one UART link | Multiple UART links to subsystems | No |
-| I²C sensor interface | One I²C bus operational | Shared I²C bus for multiple sensors | No |
-| SPI interface support | One SPI device supported | SPI support for HMI display and peripherals | No |
-| Human-Machine Interface support | Basic user input or display | Graphical display interface | Yes |
+| UART communication support | At least one UART link to rover ESP32 | Reliable UART communication at ≥115200 baud | No |
 | Communication with rover ESP32 | One-way command transmission | Bidirectional command and status exchange | No |
 | System status monitoring | Able to detect Bluetooth connection state | Heartbeat/status reporting over Bluetooth | Yes |
-| Power consumption | Operates without overheating | Operates within defined power budget | No |
-
-
-
+| End-to-end command latency | Response within 500 ms | Response within 200 ms typical | No |
+| Power consumption | Operates without overheating | Operates within defined rover power budget | No |
