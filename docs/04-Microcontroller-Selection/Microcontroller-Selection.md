@@ -34,7 +34,7 @@ To determine hardware compatibility and confirm sufficient I/O availability, the
 ### Mandatory Signals
 - UART (HMI): 2  
 - USB (Programming): 2  
-- Status LEDs: 4  
+- Status LEDs: 3  
 - EN (Reset): 1  
 - IO0 (Boot): 1  
 - 3.3V: 1  
@@ -49,7 +49,7 @@ To determine hardware compatibility and confirm sufficient I/O availability, the
 - Debug LED (GPIO5): 1  
 - Debug Push Button (GPIO4): 1  
 
-**Total Including Optional/Reserve Pins: 16**
+**Total Including Optional/Reserve Pins: 15**
 
 ---
 
