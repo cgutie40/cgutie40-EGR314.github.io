@@ -739,9 +739,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#recommended-additional-pins" class="md-nav__link">
+  <a href="#additional-pins" class="md-nav__link">
     <span class="md-ellipsis">
-      Recommended Additional Pins
+      Additional Pins
     </span>
   </a>
   
@@ -811,6 +811,15 @@
   <a href="#uart-to-hmi" class="md-nav__link">
     <span class="md-ellipsis">
       UART to HMI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpio-to-hmi" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPIO to HMI
     </span>
   </a>
   
@@ -1140,9 +1149,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#recommended-additional-pins" class="md-nav__link">
+  <a href="#additional-pins" class="md-nav__link">
     <span class="md-ellipsis">
-      Recommended Additional Pins
+      Additional Pins
     </span>
   </a>
   
@@ -1212,6 +1221,15 @@
   <a href="#uart-to-hmi" class="md-nav__link">
     <span class="md-ellipsis">
       UART to HMI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpio-to-hmi" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPIO to HMI
     </span>
   </a>
   
@@ -1314,8 +1332,8 @@
 <tbody>
 <tr>
 <td>Status LEDs</td>
-<td>2 GPIO outputs</td>
-<td>2</td>
+<td>4 GPIO outputs</td>
+<td>4</td>
 </tr>
 <tr>
 <td>Enable / Reset</td>
@@ -1346,8 +1364,8 @@
 </tr>
 <tr>
 <td>Ground</td>
-<td>GND (multiple recommended)</td>
-<td>3</td>
+<td>GND (multiple)</td>
+<td>2</td>
 </tr>
 </tbody>
 </table>
@@ -1357,20 +1375,20 @@
 <ul>
 <li>UART (HMI): 2  </li>
 <li>USB (Programming): 2  </li>
-<li>Status LEDs: 2  </li>
+<li>Status LEDs: 4  </li>
 <li>EN (Reset): 1  </li>
 <li>IO0 (Boot): 1  </li>
 <li>3.3V: 1  </li>
-<li>Ground: 3  </li>
+<li>Ground: 2  </li>
 </ul>
 <p><strong>Total Mandatory Pins: 12</strong></p>
 <hr>
-<h3 id="recommended-additional-pins">Recommended Additional Pins</h3>
+<h3 id="additional-pins">Additional Pins</h3>
 <ul>
-<li>Optional Debug UART (TX/RX): 2  </li>
-<li>Spare GPIO for future expansion: 4  </li>
+<li>Debug GPIO:  1</li>
+<li>Debug LED: 1</li>
 </ul>
-<p><strong>Total Including Optional/Reserve Pins: 18</strong></p>
+<p><strong>Total Including Optional/Reserve Pins: 15</strong></p>
 <hr>
 <h3 id="notes-and-design-considerations">Notes and Design Considerations</h3>
 <ul>
@@ -1569,6 +1587,13 @@
 <td>EN</td>
 <td>Pull-up required (10kΩ)</td>
 </tr>
+<tr>
+<td>Boot</td>
+<td>IO0</td>
+<td>27</td>
+<td>Boot/ RESET</td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <h3 id="uart-to-hmi">UART to HMI</h3>
@@ -1586,16 +1611,37 @@
 <tr>
 <td>UART1</td>
 <td>TX → HMI RX</td>
-<td>15</td>
-<td>GPIO3</td>
-<td>Safe GPIO</td>
+<td>28</td>
+<td>GPIO35</td>
+<td>U1TX</td>
 </tr>
 <tr>
 <td>UART1</td>
 <td>RX ← HMI TX</td>
-<td>16</td>
-<td>GPIO46</td>
-<td>Input-only pin (good for RX)</td>
+<td>29</td>
+<td>GPIO36</td>
+<td>U1RX</td>
+</tr>
+</tbody>
+</table>
+<h3 id="gpio-to-hmi">GPIO to HMI</h3>
+<table>
+<thead>
+<tr>
+<th>Peripheral</th>
+<th>Signal</th>
+<th>ESP32 Pin #</th>
+<th>GPIO</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPIO</td>
+<td>GPIO21 → HMI GPIO</td>
+<td>21</td>
+<td>GPIO21</td>
+<td>Indicates BT Connectivity Status to HMI</td>
 </tr>
 </tbody>
 </table>
@@ -1641,16 +1687,30 @@
 <tbody>
 <tr>
 <td>Status LED</td>
-<td>TX Activity</td>
+<td>BT Connected</td>
 <td>17</td>
 <td>GPIO9</td>
 <td>Output</td>
 </tr>
 <tr>
 <td>Status LED</td>
-<td>BLE Connected</td>
+<td>TX Activity</td>
 <td>18</td>
 <td>GPIO10</td>
+<td>Output</td>
+</tr>
+<tr>
+<td>Status LED</td>
+<td>RX Activity</td>
+<td>19</td>
+<td>GPIO11</td>
+<td>Output</td>
+</tr>
+<tr>
+<td>Status LED</td>
+<td>Debug LED</td>
+<td>5</td>
+<td>GPIO5</td>
 <td>Output</td>
 </tr>
 </tbody>
