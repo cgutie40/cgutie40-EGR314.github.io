@@ -13,7 +13,7 @@ The board can be powered from either a 9–12V barrel jack input or an upstream 
 This architecture maintains clear separation between control, sensing, and user interface layers while providing a stable and efficient wireless communication pathway between the rover and HMI systems.
 
 
-![Wireless Communication Subsystem](WCSV1P1.png){style width:"350" height:"300;"}
+![Wireless Communication Subsystem](WCSV2.png){style width:"350" height:"300;"}
 **Figure 01:** Wireless Communication Subsystem Schematic
 
 
