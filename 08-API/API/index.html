@@ -1274,7 +1274,8 @@
 
 <h1 id="api">API</h1>
 <h2 id="overview">Overview</h2>
-<p>The communication subsystem serves as the bridge between the remote controller HMI and the rover’s local communications system. It establishes and maintains a Bluetooth connection, verifies connectivity, and confirms messages are properly transmitted between systems.</p>
+<p>The Wireless Communication Subsystem serves as the bridge between the remote controller HMI and the rover’s local communications system. It establishes and maintains a Bluetooth connection, verifies connectivity, and confirms messages are properly transmitted between systems.</p>
+<p>On the rover side, the wheel subsystem acts as the local wireless communication point of contact, interfacing directly with the communication subsystem to receive and distribute messages to the rest of the rover subsystems.</p>
 <p>This subsystem:</p>
 <ul>
 <li>Initiates and verifies Bluetooth connection</li>
@@ -1307,7 +1308,7 @@
 <td>'c'</td>
 </tr>
 <tr>
-<td>Wheel</td>
+<td>Wheels</td>
 <td>'w'</td>
 </tr>
 <tr>
@@ -1407,7 +1408,7 @@
 <ul>
 <li>AZ = Start of message</li>
 <li>c = Communication subsystem</li>
-<li>w = Rover local comms subsystem</li>
+<li>w = Wheels (Rover local comms subsystem)</li>
 <li>BT = Bluetooth message type</li>
 <li>S = String data type</li>
 <li>check = Request to verify connection</li>
@@ -1492,7 +1493,7 @@
 <ul>
 <li>AZ = Start of message</li>
 <li>w = Rover local comms subsystem</li>
-<li>c = Communication subsystem</li>
+<li>c =  Wheels (Rover local comms subsystem)</li>
 <li>BT = Bluetooth message type</li>
 <li>S = String data type</li>
 <li>T = Connected (True)</li>
