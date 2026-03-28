@@ -5,6 +5,7 @@
 The communication subsystem serves as the bridge between the remote controller HMI and the rover’s local communications system. It establishes and maintains a Bluetooth connection, verifies connectivity, and confirms messages are properly transmitted between systems.
 
 This subsystem:
+
 - Initiates and verifies Bluetooth connection
 - Forwards commands from HMI to rover subsystems
 - Relays responses back to the HMI
