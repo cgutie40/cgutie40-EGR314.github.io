@@ -68,7 +68,7 @@ extra:
     - icon: fontawesome/regular/file-code
       link: /2026_spring
       name: 2023 Site    
-      
+
 nav:
   - Welcome: index.md
   - Requirements: 01-Requirements/Requirements.md
@@ -81,4 +81,3 @@ nav:
   - PCB: 08-PCB/PCB.md
   - API: 09-API/API.md
   - Appendix: Appendix/index.md
-
