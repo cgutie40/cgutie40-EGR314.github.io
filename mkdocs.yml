@@ -78,6 +78,7 @@ nav:
   - Power Budget: 05-Power Budget/Power_budget.md
   - BOM: 06-BOM/BOM.md
   - Schematic: 07-Schematic/schematic.md
-  - API: 08-API/API.md
+  - PCB: 08-PCB/PCB.md
+  - API: 09-API/API.md
   - Appendix: Appendix/index.md
 
