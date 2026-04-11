@@ -19,4 +19,4 @@ This architecture maintains clear separation between control, sensing, and user 
 
 ## Resouces
 
-The schematic as a PDF download is available [*here*](WCS_SCHEMATIC_FINAL.pdf), and the Zip folder of the project [*here*](Wireless%20Communication%20Subsystem%20V1.zip).
+The schematic as a PDF download is available [*here*](WCS_SCHEMATIC_FINAL.pdf), and the Zip folder of the project [*here*](Gerber_CGE_V8F.zip).
