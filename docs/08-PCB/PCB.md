@@ -1,18 +1,18 @@
 ## PCB 
 
-![Wireless Communication Subsystem PCB](PCB_FB_PNG.png){style width:"350" height:"300;"}
+![Wireless Communication Subsystem PCB](PCB_FB_PNG.png)
 
 **Figure 01:** Front and Back PCB Layer
 
-![Wireless Communication Subsystem PCB](PCB_FL_PNG.png){style width:"350" height:"300;"}
+![Wireless Communication Subsystem PCB](PCB_FL_PNG.png)
 
 **Figure 02:** Front PCB Layer
 
-![Wireless Communication Subsystem PCB](PCB_BL_PNG.png){style width:"350" height:"300;"}
+![Wireless Communication Subsystem PCB](PCB_BL_PNG.png)
 
 **Figure 03:** Back PCB Layer
 
-![Wireless Communication Subsystem PCB](C3D_FL_PCBV.png){style width:"350" height:"300;"}
+![Wireless Communication Subsystem PCB](C3D_FL_PCBV.png)
 
 **Figure 04:** Front PCB View
 
