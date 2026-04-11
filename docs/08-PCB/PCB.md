@@ -1,4 +1,3 @@
-## PCB 
 
 ![Wireless Communication Subsystem PCB](PCB_FB_PNG.png)
 
