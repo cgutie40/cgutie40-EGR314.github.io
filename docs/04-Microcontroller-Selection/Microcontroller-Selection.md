@@ -2,14 +2,14 @@
 
 ## Project-Specific Peripheral and Pin Requirements
 
-To determine hardware compatibility and confirm sufficient I/O availability, the required peripherals and total pin count for the Wireless Communication Subsystem were checked. The ESP32-S3-WROOM-1 module will serve as a communication bridge between the HMI (via UART) and the rover’s local communications ESP32 (via Bluetooth).
+To determine hardware compatibility and confirm sufficient I/O availability, the required peripherals and total pin count for the Wireless Communication Subsystem were checked. The ESP32-S3-WROOM-1 module will serve as a communication bridge between the HMI (via UART) and the rover’s local communications ESP32 using WiFi-based MQTT communication.
 
 ### Required Communication Interfaces
 
 | Interface | Signals Required | Total Pins |
 |------------|------------------|------------|
 | UART (HMI) | TX, RX | 2 |
-| Bluetooth | Internal (no external GPIO required) | 0 |
+| WiFi (MQTT) | Internal (no external GPIO required) | 0 |
 | Native USB Programming | D+, D− | 2 |
 
 ### Control and Support Signals
@@ -56,7 +56,7 @@ To determine hardware compatibility and confirm sufficient I/O availability, the
 ### Notes and Design Considerations
 
 - The ESP32-S3 operates at 3.3V logic levels. All UART-connected devices must be 3.3V compatible or use level shifting.
-- Bluetooth communication is internal to the module and does not require dedicated GPIO pins.
+- WiFi-based MQTT communication is handled internally by the ESP32 and does not require dedicated GPIO pins.
 - Multiple ground pins are recommended for reliable external connections.
 - Boot and reset pins must remain accessible to allow firmware flashing.
 - A dedicated debug push button (GPIO4) is included for manual testing, firmware reset control, or triggering diagnostic routines.
@@ -64,10 +64,12 @@ To determine hardware compatibility and confirm sufficient I/O availability, the
 
 This analysis confirms that the ESP32-S3-WROOM-1 module provides sufficient peripheral interfaces and GPIO availability to support the communications subsystem requirements.
 
+---
+
 ## Microcontroller (ESP32)
 
-| Parameter|Specification|
-| --------------------------------------------- | -------------------------------------------- |
+| Parameter | Specification |
+|---------------------------------------------|--------------------------------------------|
 | Model | ESP32-S3-WROOM-1-N4 |
 | Product Page URL | [ESP32-S3-WROOM-1 Product Page](https://www.espressif.com/en/products/modules/esp32-s3-wroom-1) |
 | ESP32-S3-WROOM-1-N4 Datasheet URL | [ESP32-S3-WROOM-1 Datasheet](https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf) |
@@ -77,16 +79,16 @@ This analysis confirms that the ESP32-S3-WROOM-1 module provides sufficient peri
 | Code Examples | [ESP-IDF Examples](https://github.com/espressif/esp-idf/tree/master/examples), [Arduino ESP32 Core](https://github.com/espressif/arduino-esp32) |
 | External Resources URL(s) | [Random Nerd Tutorials – ESP32-S3](https://randomnerdtutorials.com/), [Espressif YouTube Channel](https://www.youtube.com/@EspressifSystems) |
 | Unit cost | ~$5.06 USD (qty 1) |
-|Supply Voltage Range | 3.0 – 3.6 V (Nominal 3.3 V), Absolute Max 3.6 V|
-|Maximum GPIO current (per pin) | 40 mA source, 28 mA sink|
-|Absolute Maximum Current (entire IC) | Not explicitly specified; external supply up to 0.5 A (recommended)|
+| Supply Voltage Range | 3.0 – 3.6 V (Nominal 3.3 V), Absolute Max 3.6 V |
+| Maximum GPIO current (per pin) | 40 mA source, 28 mA sink |
+| Absolute Maximum Current (entire IC) | Not explicitly specified; external supply up to 0.5 A (recommended) |
 | Supports External Interrupts? | Yes |
 | Required Programming Hardware, Cost, URL | USB cable (native USB supported) or 3.3V USB-to-UART adapter (~$10) |
 
 ---
 
 | Module | # Available | Needed | Associated Pins (or * for any) |
-| -------------- | ----------- | ------ | ------------------------------ |
+|-------------- | ----------- | ------ | ------------------------------ |
 | UART | 3 | 1 | Any GPIO via matrix (TX/RX) |
 | external SPI* | 2 (SPI2, SPI3) | 0 | * |
 | I2C | 2 | 0 | * |
@@ -95,37 +97,38 @@ This analysis confirms that the ESP32-S3-WROOM-1 module provides sufficient peri
 | LED PWM | 8 channels (LEDC) | 0–1 | Status LED |
 | Motor PWM | 2 MCPWM units | 0 | - |
 | USB Programmer | 1 (native USB OTG) | 1 | USB D+ / D− |
-| WiFi | 1 | 0 | Internal |
-| Bluetooth LE | 1 | 1 | Internal |
+| WiFi | 1 | 1 | Internal (MQTT communication) |
+| Bluetooth LE | 1 | 0 | Not used |
 
 ---
-
-\* The ESP32-S3 has multiple SPI interfaces, but one is used internally for flash.
 
 ## Subsystem Role and Responsibilities
 
-As the Wireless Communication Subsystem lead, my primary role on the team is to design and implement the gateway interface between the Human-Machine Interface (HMI) and the rover’s distributed control architecture. My ESP32-S3 module serves as a communication bridge, receiving user commands from the HMI via UART and transmitting them wirelessly to the rover’s local communications ESP32 using Bluetooth. In the reverse direction, my subsystem receives telemetry data from the rover’s daisy-chained sensor network and forwards relevant information back to the HMI for display. While my subsystem does not directly perform sensing or actuation, it is responsible for reliable transport of sensor data and control signals between systems. My responsibilities include selecting and configuring UART and Bluetooth interfaces, defining packet structure and data framing, verifying signal integrity and voltage compatibility, managing power requirements for the communication hardware, and implementing error detection and recovery features. Overall, my role is to make sure my system is robust, low-latency, and a reliable bidirectional communication between the operator interface and the rover subsystems.
+As the Wireless Communication Subsystem lead, my primary role on the team is to design and implement the gateway interface between the Human-Machine Interface (HMI) and the rover’s distributed control architecture. My ESP32-S3 module serves as a communication bridge, receiving user commands from the HMI via UART and transmitting them to the rover through a WiFi-based MQTT communication system.
 
-## Worked-Out Communication Examples
+In the reverse direction, my subsystem receives telemetry data from the rover via MQTT and forwards relevant information back to the HMI for display. While my subsystem does not directly perform sensing or actuation, it is responsible for reliable transport of sensor data and control signals between systems.
 
-### 1. BLE GATT Communication (ESP32 ↔ ESP32)
+My responsibilities include configuring UART communication, implementing MQTT connectivity and message handling, defining packet structure and data framing, verifying signal integrity and voltage compatibility, managing power requirements for the communication hardware, and implementing error detection and recovery features.
 
-A BLE GATT server/client example was reviewed to verify compatibility between two ESP32 devices using Bluetooth Low Energy. In this configuration, one ESP32 acts as a GATT server (advertising telemetry data), while the other acts as a GATT client (connecting, subscribing to notifications, and sending commands). This confirms bidirectional wireless communication using the ESP32-S3 BLE stack.
-
-Reference:
-[Example 1 Link](https://randomnerdtutorials.com/esp32-ble-server-client/)
+Overall, my role is to ensure the system provides robust, low-latency, and reliable bidirectional communication between the operator interface and the rover subsystems.
 
 ---
 
-### 2. Bluetooth Classic Serial Port Profile (SPP)
+## Worked-Out Communication Examples
 
-A Bluetooth Classic SPP example was reviewed to evaluate transparent serial communication between two ESP32 boards. This approach allows one ESP32 to function as a wireless serial bridge, replacing a physical UART connection. The example demonstrates reliable data transmission between devices using the ESP-IDF Bluetooth SPP API.
+### 1. MQTT Communication (ESP32 ↔ ESP32 via Broker)
 
-Reference:
-[Example 2 Link](https://github.com/nopnop2002/esp-idf-Bluetooth-SPP)
+An MQTT publish/subscribe example was reviewed to verify communication between two ESP32 devices over WiFi. In this configuration, one ESP32 publishes command or telemetry data to a topic, while the other subscribes to that topic and processes incoming messages.
 
- ## ESP32-S3-WROOM-1 / 1U Pin Allocation Tables
- 
+This confirms reliable bidirectional communication using a broker-based architecture, where both devices communicate indirectly through MQTT topics.
+
+Reference:  
+https://randomnerdtutorials.com/esp32-mqtt-publish-subscribe-arduino-ide/
+
+---
+
+## ESP32-S3-WROOM-1 / 1U Pin Allocation Tables
+
 ![ESP32-S3-WROOM-1 / 1U Pin Allocation Image](pinoutDiagram.png)
 
 | Peripheral | Signal | ESP32 Pin # | GPIO | Notes |
@@ -133,51 +136,52 @@ Reference:
 | Power | 3V3 | 2 | 3V3 | 3.3V supply |
 | Power | GND | 1, 40, EPAD | GND | Tie all grounds |
 | Enable | EN | 3 | EN | Pull-up required (10kΩ) |
-| Boot | IO0 | 27 | Boot |
+| Boot | IO0 | 27 | Boot | |
 
 ### UART to HMI
 
 | Peripheral | Signal | ESP32 Pin # | GPIO | Notes |
 |------------|--------|-------------|------|-------|
 | UART1 | TX → HMI RX | 28 | GPIO35 | U1TX |
-| UART1 | RX ← HMI TX | 29 | GPIO36 | U1RX|
+| UART1 | RX ← HMI TX | 29 | GPIO36 | U1RX |
 
 ### GPIO to HMI
 
 | Peripheral | Signal | ESP32 Pin # | GPIO | Notes |
 |------------|--------|-------------|------|-------|
-| GPIO | GPIO21 → HMI GPIO | 21 | GPIO21 | Indicates BT Connectivity Status to HMI|
+| GPIO | GPIO21 → HMI GPIO | 21 | GPIO21 | Indicates MQTT connectivity status to HMI |
 
 ### Debug Interface
 
 | Peripheral | Signal | ESP32 Pin # | GPIO | Notes |
 |------------|--------|-------------|------|-------|
 | Push Button | Debug Button | 4 | GPIO4 | Active-low input, internal pull-up enabled |
-| Status LED |Debug LED | 5 | GPIO5 | Output |
+| Status LED | Debug LED | 5 | GPIO5 | Output |
 
 ### USB Programming (Native USB)
 
 | Peripheral | Signal | ESP32 Pin # | GPIO | Notes |
 |------------|--------|-------------|------|-------|
-| USB | D+ | 14 | GPIO20 | Native USB function (D+)|
-| USB | D− | 13 | GPIO19 | Native USB function (D-)|
+| USB | D+ | 14 | GPIO20 | Native USB function (D+) |
+| USB | D− | 13 | GPIO19 | Native USB function (D-) |
 
 ### Status LEDs
 
 | Peripheral | Signal | ESP32 Pin # | GPIO | Notes |
 |------------|--------|-------------|------|-------|
-| Status LED | BT Connected | 17 | GPIO9 | Output |
+| Status LED | Connected | 17 | GPIO9 | Output |
 | Status LED | TX Activity | 18 | GPIO10 | Output |
 | Status LED | RX Activity | 19 | GPIO11 | Output |
 
+---
 
 ## Final Microcontroller Selection and Rationale
 
 After evaluating project requirements and available microcontroller options, the **ESP32-S3-WROOM-1** was selected as the final microcontroller for the Wireless Communication Subsystem.
 
-This subsystem requires reliable bidirectional communication between the HMI (via UART) and the rover’s local controller (via Bluetooth). The ESP32-S3 integrates both **Bluetooth (BLE and Classic)** and multiple hardware communication interfaces, including up to three UARTs and native USB support. This eliminates the need for external wireless modules and reduces overall system complexity.
+This subsystem requires reliable bidirectional communication between the HMI (via UART) and the rover’s local controller using WiFi-based MQTT communication. The ESP32-S3 integrates WiFi and multiple hardware communication interfaces, including up to three UARTs and native USB support, eliminating the need for external communication modules.
 
-The dual-core 240 MHz processor provides sufficient computational headroom to manage concurrent UART communication, Bluetooth stack operation, and packet parsing without risking latency or dropped data. Additionally, the flexible GPIO matrix simplifies peripheral routing and supports iterative hardware revisions.
+The dual-core 240 MHz processor provides sufficient computational headroom to manage concurrent UART communication, MQTT processing, and packet parsing without risking latency or dropped data. Additionally, the flexible GPIO matrix simplifies peripheral routing and supports iterative hardware revisions.
 
 Operating at 3.3 V, the ESP32-S3 is compatible with a switching buck regulator from the 9–12 V battery supply. Its cost-effective pricing and strong ecosystem support (ESP-IDF, Arduino core, extensive documentation) further reduce development risk.
 
