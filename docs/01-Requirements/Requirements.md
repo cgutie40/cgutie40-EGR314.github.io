@@ -21,7 +21,7 @@ The subsystem shall include a surface-mounted ESP32 microcontroller powered by a
 | Microcontroller power source | Powered from onboard regulator | Powered from 3.3 V switching regulator | No |
 | MQTT communication capability | Able to send OR receive MQTT data | Bidirectional MQTT communication over WiFi | No |
 | Wireless communication range | Minimum 2 meters reliable link | Limited by WiFi network coverage (≥ 10 meters typical) | Yes |
-| UART communication support | At least one UART link to rover ESP32 | Reliable UART communication at ≥115200 baud | No |
+| UART communication support | At least one UART link to rover ESP32 | Reliable UART communication at ≥9600 baud | No |
 | Communication with rover ESP32 | One-way command transmission | Bidirectional command and status exchange | No |
 | System status monitoring | Able to detect MQTT/WiFi connection state | Heartbeat/status reporting over MQTT | Yes |
 | End-to-end command latency | Response within 500 ms | Response within 200 ms typical | No |
