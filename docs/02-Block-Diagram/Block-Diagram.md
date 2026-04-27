@@ -9,9 +9,9 @@ tags:
 
 The block diagram illustrates the electrical architecture of the Wireless Communication Subsystem and its integration within the rover system.
 
-The ESP32 on this subsystem functions as a communication gateway rather than a primary system controller. It establishes a Bluetooth Classic connection using the Serial Port Profile (SPP) to enable bidirectional wireless communication between the Human-Machine Interface (HMI) and the rover.
+The ESP32 on this subsystem functions as a communication gateway rather than a primary system controller. It establishes a WiFi-based MQTT connection to enable bidirectional wireless communication between the Human-Machine Interface (HMI) and the rover through a centralized broker.
 
-On the rover side, subsystem data from motion, arm, and other modules is aggregated and transmitted via a UART daisy-chain to the rover’s local ESP32. The Wireless Communication Subsystem interfaces with this ESP32 through a dedicated UART connection, forwarding command and telemetry data between the UART link and the Bluetooth connection.
+On the controller side, data from the HMI is received via UART and forwarded to the MQTT broker. On the rover side, subsystem data from motion, arm, and other modules is aggregated and transmitted via a UART daisy-chain to the rover’s local ESP32. The Wireless Communication Subsystem interfaces with this ESP32 through a dedicated UART connection, forwarding command and telemetry data between the UART link and the MQTT communication link.
 
 ## Block Diagram: Wireless Communication Subsystem
 ![Block Diagram: Wireless Communication Subsystem](WCS_FINAL.png)
