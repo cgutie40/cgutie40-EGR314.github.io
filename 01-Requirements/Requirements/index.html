@@ -780,9 +780,9 @@
 
 <h2 id="wireless-communication-subsystem-module-requirements">Wireless Communication Subsystem Module Requirements</h2>
 <p>The Wireless Communication Subsystem provides a bidirectional communication bridge between the Human-Machine Interface (HMI) and the rover’s onboard ESP32 communication module. The subsystem enables wireless transmission of user commands from the HMI to the rover and returns rover status and telemetry data back to the HMI.</p>
-<p>The subsystem shall use Bluetooth Classic communication via the Serial Port Profile (SPP) to establish a reliable wireless serial link. Over this link, command and telemetry data shall be transmitted between the HMI and the rover’s local ESP32. The subsystem functions as a communication gateway and does not directly control motors, sensors, or actuators.</p>
-<p>On the rover side, subsystem data is aggregated and transmitted via UART to the rover’s local ESP32. The Wireless Communication Subsystem interfaces with this ESP32 through a dedicated UART connection, forwarding data between the UART interface and the Bluetooth SPP link.</p>
-<p>The subsystem shall include a surface-mounted ESP32 microcontroller powered by a regulated 3.3 V onboard switching power supply. It shall support reliable bidirectional communication, and maintain connection status awareness.</p>
+<p>The subsystem shall use WiFi-based MQTT communication to establish a reliable wireless link through a centralized broker. Over this link, command and telemetry data shall be transmitted between the HMI and the rover’s ESP32 modules. The subsystem functions as a communication gateway and does not directly control motors, sensors, or actuators.</p>
+<p>On the controller side, the subsystem interfaces with the HMI via UART and forwards data to the MQTT broker. On the rover side, subsystem data is received from the MQTT broker and transmitted via UART to the rover’s local ESP32. The Wireless Communication Subsystem bridges data between the UART interface and the MQTT communication link.</p>
+<p>The subsystem shall include a surface-mounted ESP32 microcontroller powered by a regulated 3.3 V onboard switching power supply. It shall support reliable bidirectional communication, maintain connection status awareness, and maintain a reliable connection to the MQTT broker.</p>
 <h4 id="wireless-communication-subsystem-requirements">Wireless Communication Subsystem Requirements</h4>
 <table>
 <thead>
@@ -813,15 +813,15 @@
 <td style="text-align: center;">No</td>
 </tr>
 <tr>
-<td>Bluetooth communication capability</td>
-<td>Able to send OR receive Bluetooth data</td>
-<td>Bidirectional Bluetooth Classic communication using SPP</td>
+<td>MQTT communication capability</td>
+<td>Able to send OR receive MQTT data</td>
+<td>Bidirectional MQTT communication over WiFi</td>
 <td style="text-align: center;">No</td>
 </tr>
 <tr>
-<td>Bluetooth communication range</td>
+<td>Wireless communication range</td>
 <td>Minimum 2 meters reliable link</td>
-<td>≥ 5 meters reliable link</td>
+<td>Limited by WiFi network coverage (≥ 10 meters typical)</td>
 <td style="text-align: center;">Yes</td>
 </tr>
 <tr>
@@ -838,8 +838,8 @@
 </tr>
 <tr>
 <td>System status monitoring</td>
-<td>Able to detect Bluetooth connection state</td>
-<td>Heartbeat/status reporting over Bluetooth</td>
+<td>Able to detect MQTT/WiFi connection state</td>
+<td>Heartbeat/status reporting over MQTT</td>
 <td style="text-align: center;">Yes</td>
 </tr>
 <tr>
