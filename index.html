@@ -804,23 +804,25 @@ S.C.O.U.T.S<br>
 <p><strong>Submission: January 18, 2026</strong>
 </p></center><p></p>
 <h2 id="introduction">Introduction</h2>
-<ul>
-<li><strong>This needs to be updated so that a reader gets an idea of the purpose of this datasheet.</strong></li>
-</ul>
+<p>This document provides a detailed overview of the Wireless Communication Subsystem used in the rover system. It outlines the design, hardware selection, communication architecture, and implementation details of the subsystem. The purpose of this datasheet is to describe how reliable bidirectional communication is achieved between the Human-Machine Interface (HMI) and the rover using a WiFi-based MQTT communication framework.</p>
+<hr>
 <h3 id="project-summary">Project Summary</h3>
-<ul>
-<li>This needs to be updated to reflect <ins>your version</ins> of the team project, so when shared not via the team's report, the reader gets an idea of the direction of the project and how your work will contribute to the overall success.</li>
-<li>Team 202 <a href="https://egr314-s-2026-202.github.io/">Team Report.</a></li>
-</ul>
+<p>Team 202’s project focuses on the design and development of a modular rover system capable of remote operation, subsystem coordination, and real-time feedback to the user. The rover consists of multiple subsystems, including motion (wheels), sensing modules (temperature, pressure, metal detection), and a robotic arm, all coordinated through a distributed communication architecture.</p>
+<p>The system is designed with clear separation between sensing, control, and user interface layers. The HMI allows an operator to send commands and receive telemetry, while onboard subsystems execute tasks and collect data. Communication between these components is critical to overall system performance.</p>
+<p>The Wireless Communication Subsystem enables this interaction by acting as a gateway between the HMI and the rover. Instead of using a direct wireless link, the system uses a WiFi-based MQTT architecture, where both the controller and rover communicate through a centralized broker. This approach improves scalability, reliability, and flexibility in how subsystems exchange information.</p>
+<hr>
 <h3 id="my-contribution">My Contribution</h3>
+<p>As the Wireless Communication Subsystem lead, my responsibility is to design and implement the communication bridge that connects the HMI to the rover’s distributed subsystems.</p>
+<p>My work focuses on:</p>
 <ul>
-<li>This needs to be updated to reflect a team introduction</li>
-<li>Content should also help an unfamiliar reader navigate to areas of interest. Information like:</li>
+<li>Implementing a UART ↔ MQTT gateway using the ESP32-S3  </li>
+<li>Designing and validating the packet structure used for subsystem communication  </li>
+<li>Managing reliable message transfer between controller and rover  </li>
+<li>Handling connection verification and system status signaling  </li>
+<li>Integrating hardware interfaces including UART, GPIO status indicators, and power systems  </li>
 </ul>
-<p>To review the details listed of the material used to construct the subsection, you can review it in the <a href="https://embedded-systems-design.github.io/EGR314DataSheetTemplate/04-BOM/BOM/">"BOM"</a> section of the datasheet.</p>
-<blockquote>
-<p>Continue for all the remaining/missing sections.</p>
-</blockquote>
+<p>This subsystem does not perform sensing or actuation directly; instead, it enables reliable transport of commands and telemetry between systems. Its performance directly impacts system responsiveness, reliability, and overall usability.</p>
+<p>This document is intended to provide a clear understanding of how the communication subsystem operates and how it supports the overall rover system.</p>
 
 
 
