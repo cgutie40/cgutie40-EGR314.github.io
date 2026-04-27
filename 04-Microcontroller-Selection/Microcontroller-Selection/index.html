@@ -664,22 +664,28 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-ble-gatt-communication-esp32-esp32" class="md-nav__link">
+  <a href="#1-mqtt-communication-esp32-esp32-via-broker" class="md-nav__link">
     <span class="md-ellipsis">
-      1. BLE GATT Communication (ESP32 ↔ ESP32)
+      1. MQTT Communication (ESP32 ↔ ESP32 via Broker)
     </span>
   </a>
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#2-bluetooth-classic-serial-port-profile-spp" class="md-nav__link">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#esp32-s3-wroom-1-1u-pin-allocation-tables" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Bluetooth Classic Serial Port Profile (SPP)
+      ESP32-S3-WROOM-1 / 1U Pin Allocation Tables
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="ESP32-S3-WROOM-1 / 1U Pin Allocation Tables">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#uart-to-hmi" class="md-nav__link">
@@ -1001,22 +1007,28 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-ble-gatt-communication-esp32-esp32" class="md-nav__link">
+  <a href="#1-mqtt-communication-esp32-esp32-via-broker" class="md-nav__link">
     <span class="md-ellipsis">
-      1. BLE GATT Communication (ESP32 ↔ ESP32)
+      1. MQTT Communication (ESP32 ↔ ESP32 via Broker)
     </span>
   </a>
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#2-bluetooth-classic-serial-port-profile-spp" class="md-nav__link">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#esp32-s3-wroom-1-1u-pin-allocation-tables" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Bluetooth Classic Serial Port Profile (SPP)
+      ESP32-S3-WROOM-1 / 1U Pin Allocation Tables
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="ESP32-S3-WROOM-1 / 1U Pin Allocation Tables">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#uart-to-hmi" class="md-nav__link">
@@ -1102,7 +1114,7 @@
 
 <h1 id="microcontroller-selection">Microcontroller Selection</h1>
 <h2 id="project-specific-peripheral-and-pin-requirements">Project-Specific Peripheral and Pin Requirements</h2>
-<p>To determine hardware compatibility and confirm sufficient I/O availability, the required peripherals and total pin count for the Wireless Communication Subsystem were checked. The ESP32-S3-WROOM-1 module will serve as a communication bridge between the HMI (via UART) and the rover’s local communications ESP32 (via Bluetooth).</p>
+<p>To determine hardware compatibility and confirm sufficient I/O availability, the required peripherals and total pin count for the Wireless Communication Subsystem were checked. The ESP32-S3-WROOM-1 module will serve as a communication bridge between the HMI (via UART) and the rover’s local communications ESP32 using WiFi-based MQTT communication.</p>
 <h3 id="required-communication-interfaces">Required Communication Interfaces</h3>
 <table>
 <thead>
@@ -1119,7 +1131,7 @@
 <td>2</td>
 </tr>
 <tr>
-<td>Bluetooth</td>
+<td>WiFi (MQTT)</td>
 <td>Internal (no external GPIO required)</td>
 <td>0</td>
 </tr>
@@ -1204,13 +1216,14 @@
 <h3 id="notes-and-design-considerations">Notes and Design Considerations</h3>
 <ul>
 <li>The ESP32-S3 operates at 3.3V logic levels. All UART-connected devices must be 3.3V compatible or use level shifting.</li>
-<li>Bluetooth communication is internal to the module and does not require dedicated GPIO pins.</li>
+<li>WiFi-based MQTT communication is handled internally by the ESP32 and does not require dedicated GPIO pins.</li>
 <li>Multiple ground pins are recommended for reliable external connections.</li>
 <li>Boot and reset pins must remain accessible to allow firmware flashing.</li>
 <li>A dedicated debug push button (GPIO4) is included for manual testing, firmware reset control, or triggering diagnostic routines.</li>
 <li>Additional spare GPIO pins remain reserved for future subsystem expansion.</li>
 </ul>
 <p>This analysis confirms that the ESP32-S3-WROOM-1 module provides sufficient peripheral interfaces and GPIO availability to support the communications subsystem requirements.</p>
+<hr>
 <h2 id="microcontroller-esp32">Microcontroller (ESP32)</h2>
 <table>
 <thead>
@@ -1340,32 +1353,32 @@
 <tr>
 <td>WiFi</td>
 <td>1</td>
-<td>0</td>
-<td>Internal</td>
+<td>1</td>
+<td>Internal (MQTT communication)</td>
 </tr>
 <tr>
 <td>Bluetooth LE</td>
 <td>1</td>
-<td>1</td>
-<td>Internal</td>
+<td>0</td>
+<td>Not used</td>
 </tr>
 </tbody>
 </table>
 <hr>
-<p>* The ESP32-S3 has multiple SPI interfaces, but one is used internally for flash.</p>
 <h2 id="subsystem-role-and-responsibilities">Subsystem Role and Responsibilities</h2>
-<p>As the Wireless Communication Subsystem lead, my primary role on the team is to design and implement the gateway interface between the Human-Machine Interface (HMI) and the rover’s distributed control architecture. My ESP32-S3 module serves as a communication bridge, receiving user commands from the HMI via UART and transmitting them wirelessly to the rover’s local communications ESP32 using Bluetooth. In the reverse direction, my subsystem receives telemetry data from the rover’s daisy-chained sensor network and forwards relevant information back to the HMI for display. While my subsystem does not directly perform sensing or actuation, it is responsible for reliable transport of sensor data and control signals between systems. My responsibilities include selecting and configuring UART and Bluetooth interfaces, defining packet structure and data framing, verifying signal integrity and voltage compatibility, managing power requirements for the communication hardware, and implementing error detection and recovery features. Overall, my role is to make sure my system is robust, low-latency, and a reliable bidirectional communication between the operator interface and the rover subsystems.</p>
-<h2 id="worked-out-communication-examples">Worked-Out Communication Examples</h2>
-<h3 id="1-ble-gatt-communication-esp32-esp32">1. BLE GATT Communication (ESP32 ↔ ESP32)</h3>
-<p>A BLE GATT server/client example was reviewed to verify compatibility between two ESP32 devices using Bluetooth Low Energy. In this configuration, one ESP32 acts as a GATT server (advertising telemetry data), while the other acts as a GATT client (connecting, subscribing to notifications, and sending commands). This confirms bidirectional wireless communication using the ESP32-S3 BLE stack.</p>
-<p>Reference:
-<a href="https://randomnerdtutorials.com/esp32-ble-server-client/">Example 1 Link</a></p>
+<p>As the Wireless Communication Subsystem lead, my primary role on the team is to design and implement the gateway interface between the Human-Machine Interface (HMI) and the rover’s distributed control architecture. My ESP32-S3 module serves as a communication bridge, receiving user commands from the HMI via UART and transmitting them to the rover through a WiFi-based MQTT communication system.</p>
+<p>In the reverse direction, my subsystem receives telemetry data from the rover via MQTT and forwards relevant information back to the HMI for display. While my subsystem does not directly perform sensing or actuation, it is responsible for reliable transport of sensor data and control signals between systems.</p>
+<p>My responsibilities include configuring UART communication, implementing MQTT connectivity and message handling, defining packet structure and data framing, verifying signal integrity and voltage compatibility, managing power requirements for the communication hardware, and implementing error detection and recovery features.</p>
+<p>Overall, my role is to ensure the system provides robust, low-latency, and reliable bidirectional communication between the operator interface and the rover subsystems.</p>
 <hr>
-<h3 id="2-bluetooth-classic-serial-port-profile-spp">2. Bluetooth Classic Serial Port Profile (SPP)</h3>
-<p>A Bluetooth Classic SPP example was reviewed to evaluate transparent serial communication between two ESP32 boards. This approach allows one ESP32 to function as a wireless serial bridge, replacing a physical UART connection. The example demonstrates reliable data transmission between devices using the ESP-IDF Bluetooth SPP API.</p>
-<p>Reference:
-<a href="https://github.com/nopnop2002/esp-idf-Bluetooth-SPP">Example 2 Link</a></p>
-<p>## ESP32-S3-WROOM-1 / 1U Pin Allocation Tables</p>
+<h2 id="worked-out-communication-examples">Worked-Out Communication Examples</h2>
+<h3 id="1-mqtt-communication-esp32-esp32-via-broker">1. MQTT Communication (ESP32 ↔ ESP32 via Broker)</h3>
+<p>An MQTT publish/subscribe example was reviewed to verify communication between two ESP32 devices over WiFi. In this configuration, one ESP32 publishes command or telemetry data to a topic, while the other subscribes to that topic and processes incoming messages.</p>
+<p>This confirms reliable bidirectional communication using a broker-based architecture, where both devices communicate indirectly through MQTT topics.</p>
+<p>Reference:<br>
+https://randomnerdtutorials.com/esp32-mqtt-publish-subscribe-arduino-ide/</p>
+<hr>
+<h2 id="esp32-s3-wroom-1-1u-pin-allocation-tables">ESP32-S3-WROOM-1 / 1U Pin Allocation Tables</h2>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../pinoutDiagram.png" data-desc-position="bottom"><img alt="ESP32-S3-WROOM-1 / 1U Pin Allocation Image" src="../pinoutDiagram.png"></a></p>
 <table>
 <thead>
@@ -1453,7 +1466,7 @@
 <td>GPIO21 → HMI GPIO</td>
 <td>21</td>
 <td>GPIO21</td>
-<td>Indicates BT Connectivity Status to HMI</td>
+<td>Indicates MQTT connectivity status to HMI</td>
 </tr>
 </tbody>
 </table>
@@ -1527,7 +1540,7 @@
 <tbody>
 <tr>
 <td>Status LED</td>
-<td>BT Connected</td>
+<td>Connected</td>
 <td>17</td>
 <td>GPIO9</td>
 <td>Output</td>
@@ -1548,10 +1561,11 @@
 </tr>
 </tbody>
 </table>
+<hr>
 <h2 id="final-microcontroller-selection-and-rationale">Final Microcontroller Selection and Rationale</h2>
 <p>After evaluating project requirements and available microcontroller options, the <strong>ESP32-S3-WROOM-1</strong> was selected as the final microcontroller for the Wireless Communication Subsystem.</p>
-<p>This subsystem requires reliable bidirectional communication between the HMI (via UART) and the rover’s local controller (via Bluetooth). The ESP32-S3 integrates both <strong>Bluetooth (BLE and Classic)</strong> and multiple hardware communication interfaces, including up to three UARTs and native USB support. This eliminates the need for external wireless modules and reduces overall system complexity.</p>
-<p>The dual-core 240 MHz processor provides sufficient computational headroom to manage concurrent UART communication, Bluetooth stack operation, and packet parsing without risking latency or dropped data. Additionally, the flexible GPIO matrix simplifies peripheral routing and supports iterative hardware revisions.</p>
+<p>This subsystem requires reliable bidirectional communication between the HMI (via UART) and the rover’s local controller using WiFi-based MQTT communication. The ESP32-S3 integrates WiFi and multiple hardware communication interfaces, including up to three UARTs and native USB support, eliminating the need for external communication modules.</p>
+<p>The dual-core 240 MHz processor provides sufficient computational headroom to manage concurrent UART communication, MQTT processing, and packet parsing without risking latency or dropped data. Additionally, the flexible GPIO matrix simplifies peripheral routing and supports iterative hardware revisions.</p>
 <p>Operating at 3.3 V, the ESP32-S3 is compatible with a switching buck regulator from the 9–12 V battery supply. Its cost-effective pricing and strong ecosystem support (ESP-IDF, Arduino core, extensive documentation) further reduce development risk.</p>
 <p>Based on wireless integration, communication flexibility, processing capability, cost, and ecosystem maturity, the ESP32-S3-WROOM-1 represents the optimal balance of performance and simplicity for this communications-focused design.</p>
 
