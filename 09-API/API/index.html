@@ -710,9 +710,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#bluetooth-connection-check" class="md-nav__link">
+  <a href="#connection-check" class="md-nav__link">
     <span class="md-ellipsis">
-      Bluetooth Connection Check
+      Connection Check
     </span>
   </a>
   
@@ -734,9 +734,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#bluetooth-connection-status" class="md-nav__link">
+  <a href="#connection-status" class="md-nav__link">
     <span class="md-ellipsis">
-      Bluetooth Connection Status
+      Connection Status
     </span>
   </a>
   
@@ -896,9 +896,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#bluetooth-connection-check" class="md-nav__link">
+  <a href="#connection-check" class="md-nav__link">
     <span class="md-ellipsis">
-      Bluetooth Connection Check
+      Connection Check
     </span>
   </a>
   
@@ -920,9 +920,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#bluetooth-connection-status" class="md-nav__link">
+  <a href="#connection-status" class="md-nav__link">
     <span class="md-ellipsis">
-      Bluetooth Connection Status
+      Connection Status
     </span>
   </a>
   
@@ -1000,11 +1000,11 @@
 
 <h1 id="api">API</h1>
 <h2 id="overview">Overview</h2>
-<p>The Wireless Communication Subsystem serves as the bridge between the remote controller HMI and the rover’s local communications system. It establishes and maintains a Bluetooth connection, verifies connectivity, and confirms messages are properly transmitted between systems.</p>
-<p>On the rover side, the wheel subsystem acts as the local wireless communication point of contact, interfacing directly with the communication subsystem to receive and distribute messages to the rest of the rover subsystems.</p>
+<p>The Wireless Communication Subsystem serves as the bridge between the remote controller HMI and the rover’s local communications system. It establishes and maintains a WiFi-based MQTT connection, verifies connectivity, and confirms messages are properly transmitted between systems.</p>
+<p>On the rover side, the wheel subsystem acts as the local communication point of contact, interfacing with its ESP32 to receive and distribute messages to the rest of the rover subsystems.</p>
 <p>This subsystem:</p>
 <ul>
-<li>Initiates and verifies Bluetooth connection</li>
+<li>Establishes and verifies MQTT connection</li>
 <li>Forwards commands from HMI to rover subsystems</li>
 <li>Relays responses back to the HMI</li>
 </ul>
@@ -1057,7 +1057,7 @@
 </table>
 <hr>
 <h2 id="messages-sent-by-wireless-communication-subsystem">Messages Sent by Wireless Communication Subsystem</h2>
-<h3 id="bluetooth-connection-check">Bluetooth Connection Check</h3>
+<h3 id="connection-check">Connection Check</h3>
 <p><strong>Packet Format:</strong><br>
 <code>AZcwBT:S:check;YB</code></p>
 <p><strong>Byte Length:</strong> 17 bytes</p>
@@ -1135,14 +1135,14 @@
 <li>AZ = Start of message</li>
 <li>c = Communication subsystem</li>
 <li>w = Wheels (Rover local comms subsystem)</li>
-<li>BT = Bluetooth message type</li>
+<li>BT = Message type (connection check)</li>
 <li>S = String data type</li>
-<li>check = Request to verify connection</li>
+<li>check = Request to verify communication link</li>
 <li>YB = End of message</li>
 </ul>
 <hr>
 <h2 id="messages-received-by-wireless-communication-subsystem">Messages Received by Wireless Communication Subsystem</h2>
-<h3 id="bluetooth-connection-status">Bluetooth Connection Status</h3>
+<h3 id="connection-status">Connection Status</h3>
 <p><strong>Packet Format:</strong><br>
 <code>AZwcBT:S:T;YB</code> or <code>AZwcBT:S:F;YB</code></p>
 <p><strong>Byte Length:</strong> 13 bytes</p>
@@ -1219,8 +1219,8 @@
 <ul>
 <li>AZ = Start of message</li>
 <li>w = Wheels (Rover local comms subsystem)</li>
-<li>c =  Communication subsystem</li>
-<li>BT = Bluetooth message type</li>
+<li>c = Communication subsystem</li>
+<li>BT = Message type (connection status)</li>
 <li>S = String data type</li>
 <li>T = Connected (True)</li>
 <li>F = Disconnected (False)</li>
@@ -1228,7 +1228,7 @@
 </ul>
 <hr>
 <h2 id="broadcast-messages">Broadcast Messages</h2>
-<p>This broadcast message tells every subsystem connected to turn on their LED to indicate the system is ready. It is typically sent from the HMI subsystem and received by all subsystems (destination <code>X</code>). The wireless communication subsystem receives and forwards this message across the network.</p>
+<p>This broadcast message tells every subsystem connected to turn on their LED to indicate the system is ready. It is typically sent from the HMI subsystem and received by all subsystems (destination <code>X</code>). The wireless communication subsystem receives and forwards this message across the MQTT network.</p>
 <h3 id="start-broadcast">Start Broadcast</h3>
 <p><strong>Packet Format:</strong><br>
 <code>AZhXST:S:Start;YB</code></p>
@@ -1338,7 +1338,7 @@
 </table>
 <hr>
 <h2 id="notes">Notes</h2>
-<p>The Wireless Communication Subsystem primarily acts as a relay layer, making sure correct delivery of all messages between the controller and rover subsystems.</p>
+<p>The Wireless Communication Subsystem primarily acts as a relay layer, ensuring correct delivery of all messages between the controller and rover subsystems over the MQTT communication network.</p>
 
 
 
