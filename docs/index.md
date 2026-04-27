@@ -29,6 +29,9 @@ The system is designed with clear separation between sensing, control, and user 
 
 The Wireless Communication Subsystem enables this interaction by acting as a gateway between the HMI and the rover. Instead of using a direct wireless link, the system uses a WiFi-based MQTT architecture, where both the controller and rover communicate through a centralized broker. This approach improves scalability, reliability, and flexibility in how subsystems exchange information.
 
+For more details on the overall system, refer to the team report:  
+https://egr314-s-2026-202.github.io/
+
 ---
 
 ### My Contribution
