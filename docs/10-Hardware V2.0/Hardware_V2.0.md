@@ -1,1 +1,6 @@
 
+## Version 2.0
+
+The current design includes sufficient status LEDs to indicate system activity without requiring a computer connection for terminal monitoring. Since this PCB is intended to support wireless communication for the HMI, it does not need to be as large as the prototype version. The current design uses a 100 × 100 mm PCB, which provides ample space for soldering and organizing components. However, the board could be made smaller and more compact to better support the HMI team’s controller housing design. Reducing the PCB size could help minimize the overall controller footprint and potentially improve antenna placement, leading to better communication performance between the HMI and the rover.
+
+Additional improvements could be made to further reduce the overall size of the design. All components were selected in the 1206 package size; switching to smaller packages such as 0805 or below would help minimize the PCB footprint, though this would require more precise soldering skills and tools. Another improvement would be to change the Micro-USB connector from a vertical to a horizontal orientation, making it easier to access in tight enclosures. Lastly, increasing the spacing between the upstream and downstream 8-pin ribbon cable connectors would improve usability and reduce the risk of interference or difficulty during installation.
