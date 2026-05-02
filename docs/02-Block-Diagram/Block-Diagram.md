@@ -13,6 +13,10 @@ The ESP32 on this subsystem functions as a communication gateway rather than a p
 
 On the controller side, data from the HMI is received via UART and forwarded to the MQTT broker. On the rover side, subsystem data from motion, arm, and other modules is aggregated and transmitted via a UART daisy-chain to the rover’s local ESP32. The Wireless Communication Subsystem interfaces with this ESP32 through a dedicated UART connection, forwarding command and telemetry data between the UART link and the MQTT communication link.
 
+## Alignment with Product Requirements
+
+The Wireless Communication Subsystem design supports important product requirements by enabling reliable bidirectional data exchange between the rover and the HMI. Through the UART-to-MQTT bridge, the system allows sensor data and telemetry from the rover to be transmitted to the controller (TR-06), while also returning control commands to the rover with low latency. Additionally, the communication framework supports the transmission of system status and error information back to the HMI (TR-09), enabling monitoring and troubleshooting. Overall, the design provides continuous, responsive communication necessary for rover operation and user interaction.
+
 ## Block Diagram: Wireless Communication Subsystem
 ![Block Diagram: Wireless Communication Subsystem](WCS_BD_Final_Final.png)
 
